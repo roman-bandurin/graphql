@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import _ from "lodash"
 import Authors from "./authors.json" assert { type: "json" }
 import Posts from "./posts.json" assert { type: "json" }
 
@@ -57,8 +57,31 @@ const BlogQueryRootType = new GraphQLObjectType({
   }),
 })
 
+// const mutationType = new GraphQLObjectType({
+//   name: "Mutation",
+//   fields: {
+//     addAuthor: {
+//       type: AuthorType,
+//       args: {
+//         input: { name: GraphQLString },
+//       },
+//       resolve: function (source, args) {
+//         const authorId = Authors.length
+//         const author = {
+//           id: authorId,
+//           name: args.input.name,
+//           twitterHandle: "@alonso",
+//         }
+//         Authors.push(author)
+//         return _.find(Authors, { id: authorId })
+//       },
+//     },
+//   },
+// })
+
 const BlogAppSchema = new GraphQLSchema({
-    query: BlogQueryRootType
-});
+  query: BlogQueryRootType,
+//   mutation: mutationType,
+})
 
 export default BlogAppSchema
